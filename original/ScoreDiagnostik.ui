@@ -1,0 +1,3135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>742</width>
+    <height>722</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Medical Operation Handbook Version 6.9f</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
+  </property>
+  <property name="resizable" stdset="0">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>690</y>
+     <width>721</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_63">
+      <property name="text">
+       <string>* = Untersuchungen kann bereits die MSO durchführen</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pbPrint">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Drucken</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="autoRepeat">
+       <bool>false</bool>
+      </property>
+      <property name="autoExclusive">
+       <bool>false</bool>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pbSave">
+      <property name="text">
+       <string>Speichern &amp;&amp; Export</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pbCancel">
+      <property name="text">
+       <string>Abbrechen</string>
+      </property>
+      <property name="autoDefault">
+       <bool>true</bool>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBox" name="toolBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>721</width>
+     <height>651</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="page1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>721</width>
+      <height>597</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>Seite 2</string>
+    </attribute>
+    <widget class="QWidget" name="layoutWidget_11">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>600</y>
+       <width>721</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_18">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_19">
+        <item>
+         <widget class="QPushButton" name="pbCalculateScore">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>Score berechnen</string>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="autoRepeat">
+           <bool>false</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>false</bool>
+          </property>
+          <property name="autoRepeatDelay">
+           <number>1</number>
+          </property>
+          <property name="autoRepeatInterval">
+           <number>1</number>
+          </property>
+          <property name="autoDefault">
+           <bool>false</bool>
+          </property>
+          <property name="default">
+           <bool>false</bool>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>721</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_67">
+      <item>
+       <widget class="QComboBox" name="cbDiagnosis">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <property name="currentText">
+         <string>Stimmdiagnostik</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Stimmdiagnostik</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DAP Diagnostik</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblDiagnosis">
+        <property name="text">
+         <string>Diagnosis</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="leDiagnosis">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:black;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblTagesdatum">
+        <property name="text">
+         <string>Tagesdatum</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="deTagesdatum">
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::PlusMinus</enum>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+        <property name="currentSectionIndex">
+         <number>0</number>
+        </property>
+        <property name="date">
+         <date>
+          <year>2018</year>
+          <month>1</month>
+          <day>1</day>
+         </date>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblMEGO">
+        <property name="text">
+         <string>MSO</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="leMEGO">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblVerantwArzt">
+        <property name="text">
+         <string>Arztkürzel</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="leVerantwArzt">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>570</y>
+       <width>721</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_16">
+      <item>
+       <widget class="QLabel" name="lblProzesstreue">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Prozesstreue</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QProgressBar" name="progressBar">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblAnzahlElemente">
+        <property name="text">
+         <string>Anzahl der Elemente
+für die Prozesstreue</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="leAnzahlElemente">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:black;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lblScore">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Gesamtscore</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="leScore">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:black;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>711</width>
+       <height>531</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="mouseTracking">
+      <bool>false</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex">
+      <number>56</number>
+     </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>false</bool>
+     </property>
+     <property name="movable">
+      <bool>false</bool>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="CRSA1">
+      <attribute name="title">
+       <string>FDN A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="CRSA2">
+      <property name="visible">
+       <bool>false</bool>
+      </property>
+      <attribute name="title">
+       <string>FDN A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="CRSALL">
+      <attribute name="title">
+       <string>FDN ALL</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="MUCS">
+      <attribute name="title">
+       <string>MucS</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="TINA1">
+      <attribute name="title">
+       <string>TIN A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="TINA2">
+      <attribute name="title">
+       <string>TIN A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="TINEMPFEHLUNG">
+      <attribute name="title">
+       <string>TIN Empfehlung</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="CIA1">
+      <attribute name="title">
+       <string>CI A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="CIA2">
+      <attribute name="title">
+       <string>CI A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="AOE">
+      <attribute name="title">
+       <string>AOE</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="OMCA1">
+      <attribute name="title">
+       <string>OMC A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="OMCA2">
+      <attribute name="title">
+       <string>OMC A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="OMCA3">
+      <attribute name="title">
+       <string>OMC A3</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="widget">
+      <attribute name="title">
+       <string/>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="VEDA1">
+      <attribute name="title">
+       <string>VED A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="VEDA2">
+      <attribute name="title">
+       <string>VED A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="VEDA3">
+      <attribute name="title">
+       <string>VED A3</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="LNSA1">
+      <attribute name="title">
+       <string>LNS A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="LNSA2">
+      <attribute name="title">
+       <string>LNS A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SHLA1">
+      <attribute name="title">
+       <string>SHL A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SHLA2">
+      <attribute name="title">
+       <string>SHL A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="APR">
+      <attribute name="title">
+       <string>APR</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="TGLPHON">
+      <attribute name="title">
+       <string>TGL-PHON</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="PKS">
+      <attribute name="title">
+       <string>Mb. Parkinson</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="DYSA1">
+      <attribute name="title">
+       <string>DYS A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="DYSA2">
+      <attribute name="title">
+       <string>DYS A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SPEA1">
+      <attribute name="title">
+       <string>SPE A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SPEA2">
+      <attribute name="title">
+       <string>SPE A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="VOICEA1">
+      <attribute name="title">
+       <string>VOICE A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="VOICEA2">
+      <attribute name="title">
+       <string>VOICE A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="widget_2">
+      <attribute name="title">
+       <string/>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="widget_3">
+      <attribute name="title">
+       <string/>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="CER">
+      <attribute name="title">
+       <string>CER</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SOSAA1">
+      <attribute name="title">
+       <string>SOSA A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SOSAA2">
+      <attribute name="title">
+       <string>SOSA A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="MMA1">
+      <attribute name="title">
+       <string>MM A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="MMA2">
+      <attribute name="title">
+       <string>MM A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="MMA3">
+      <attribute name="title">
+       <string>MM A3</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="PINVII">
+      <attribute name="title">
+       <string>PI_N VII</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="MUK">
+      <attribute name="title">
+       <string>MUK</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="XXX">
+      <attribute name="title">
+       <string>XXX</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="DIZA1">
+      <attribute name="title">
+       <string>DIZ A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="DIZA2">
+      <attribute name="title">
+       <string>DIZ A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="POSTOP">
+      <attribute name="title">
+       <string>post OP</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="widget_4">
+      <attribute name="title">
+       <string/>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="DUPM">
+      <attribute name="title">
+       <string>DUPM</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="FAPS">
+      <attribute name="title">
+       <string>FAPS</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="IDS">
+      <attribute name="title">
+       <string>IDS</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="COR">
+      <attribute name="title">
+       <string>COR</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="AT">
+      <attribute name="title">
+       <string>AT</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SITA1">
+      <attribute name="title">
+       <string>SIT A1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SITA2">
+      <attribute name="title">
+       <string>SIT A2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="HAS">
+      <attribute name="title">
+       <string>HAS</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SMELL">
+      <attribute name="title">
+       <string>SMELL</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="SAHI">
+      <attribute name="title">
+       <string>SAHI</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="VAC">
+      <attribute name="title">
+       <string>VAC</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="DIAGNOSTIK">
+      <attribute name="title">
+       <string>Diagnostik</string>
+      </attribute>
+      <widget class="QTabWidget" name="tabWidgetDiagnostik">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>721</width>
+         <height>511</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:#000066;</string>
+       </property>
+       <property name="currentIndex">
+        <number>1</number>
+       </property>
+       <widget class="QWidget" name="STIMMDIAGNOSTIK">
+        <attribute name="title">
+         <string>Stimmdiagnostik</string>
+        </attribute>
+        <widget class="QTabWidget" name="tabWidgetDiagnostikStimmdiagnostik">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>100</y>
+           <width>691</width>
+           <height>391</height>
+          </rect>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>Stimmdiagnostik Score</string>
+          </attribute>
+          <widget class="QListWidget" name="lwKapitelSDScore">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>211</width>
+             <height>351</height>
+            </rect>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QListWidget" name="lwEigenschaftSDScore">
+           <property name="geometry">
+            <rect>
+             <x>460</x>
+             <y>10</y>
+             <width>221</width>
+             <height>351</height>
+            </rect>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::MultiSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectItems</enum>
+           </property>
+           <property name="textElideMode">
+            <enum>Qt::ElideNone</enum>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QListWidget" name="lwElementSDScore">
+           <property name="geometry">
+            <rect>
+             <x>230</x>
+             <y>10</y>
+             <width>221</width>
+             <height>351</height>
+            </rect>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="title">
+           <string>Stimmdiagnostik Auswertung separat</string>
+          </attribute>
+          <widget class="QScrollArea" name="scrollArea_4">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>671</width>
+             <height>341</height>
+            </rect>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_3">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>651</width>
+              <height>410</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_37">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_5">
+               <item>
+                <widget class="QGroupBox" name="groupBox_29">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Mobilität und Tonus</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_53">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_38">
+                    <item>
+                     <widget class="QLabel" name="lblStatusMobilitaetTonusSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreMobilitaetTonusSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_30">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Phonation</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_54">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_39">
+                    <item>
+                     <widget class="QLabel" name="lblStatusPhonationSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScorePhonationSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_32">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Prosodie</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_56">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_41">
+                    <item>
+                     <widget class="QLabel" name="lblStatusProsodieSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreProsodieSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_31">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Artikulation</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_55">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_40">
+                    <item>
+                     <widget class="QLabel" name="lblStatusArtikulationSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreArtikulationSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_33">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Atmung</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_57">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_42">
+                    <item>
+                     <widget class="QLabel" name="lblStatusAtmungSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreAtmungSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_34">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Stimmfunktionsprüfung</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_58">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_43">
+                    <item>
+                     <widget class="QLabel" name="lblStatusStimmfunktionspruefungSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreStimmfunktionspruefungSDiagnostik">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>Stimmdiagnostik Auswertung insgesamt</string>
+          </attribute>
+          <widget class="QWidget" name="layoutWidget_106">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>661</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QLabel" name="lblStatusGesamtSDiagnostik">
+              <property name="font">
+               <font>
+                <pointsize>16</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblScoreGesamtSDiagnostik">
+              <property name="font">
+               <font>
+                <pointsize>16</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_4">
+          <attribute name="title">
+           <string>Dysphonie Therapie</string>
+          </attribute>
+          <widget class="QScrollArea" name="scrollArea">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>0</y>
+             <width>671</width>
+             <height>351</height>
+            </rect>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>651</width>
+              <height>626</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_6">
+               <item>
+                <widget class="QGroupBox" name="groupBox_7">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Mobilität und Tonus</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item>
+                   <widget class="QListWidget" name="lwMobilitaetTonusDysphonie"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_17">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Phonation</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_24">
+                  <item>
+                   <widget class="QListWidget" name="lwPhonationDysphonie"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_16">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Prosodie</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_23">
+                  <item>
+                   <widget class="QListWidget" name="lwProsodieDysphonie"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_15">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Artikulation</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_22">
+                  <item>
+                   <widget class="QListWidget" name="lwArtikulationDysphonie"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_14">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Atmung</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_10">
+                  <item>
+                   <widget class="QListWidget" name="lwAtmungDysphonie"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_13">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Stimmfunktionsprüfung</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                  <item>
+                   <widget class="QListWidget" name="lwStimmfunktionspruefungDysphonie"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="layoutWidget_107">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>691</width>
+           <height>80</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>72</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblDatumSDiagnostik">
+              <property name="text">
+               <string>Datum:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="deDatumSDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblUntersucherSDiagnostik">
+              <property name="text">
+               <string>Untersucher/in:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leUntersucherSDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>242</width>
+                <height>0</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>75</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblNameSDiagnostik">
+              <property name="text">
+               <string>Name:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leNameSDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>242</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblIDSDiagnostik">
+              <property name="text">
+               <string>ID:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leIDSDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>242</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>242</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="lblMDSDiagnostik">
+              <property name="text">
+               <string>medizinische Diagnose:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leMDSDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>242</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblAlterSDiagnostik">
+              <property name="text">
+               <string>Alter:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leAlterSDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>242</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>242</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="DAPDIAGNOSTIK">
+        <attribute name="title">
+         <string>DAP Diagnostik</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget_108">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>691</width>
+           <height>80</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_25">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <item>
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>72</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblDatumDAPDiagnostik">
+              <property name="text">
+               <string>Datum:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="deDatumDAPDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_8">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblUntersucherDAPDiagnostik">
+              <property name="text">
+               <string>Untersucher/in:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leUntersucherDAPDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>242</width>
+                <height>0</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <item>
+             <spacer name="horizontalSpacer_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>75</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblNameDAPDiagnostik">
+              <property name="text">
+               <string>Name:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leNameDAPDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>242</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_10">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblIDDAPDiagnostik">
+              <property name="text">
+               <string>ID:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leIDDAPDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>242</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>242</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item>
+             <widget class="QLabel" name="lblMDDAPDiagnostik">
+              <property name="text">
+               <string>medizinische Diagnose:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leMDDAPDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>242</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_11">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblAlterDAPDiagnostik">
+              <property name="text">
+               <string>Alter:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="leAlterDAPDiagnostik">
+              <property name="minimumSize">
+               <size>
+                <width>242</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>242</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QTabWidget" name="tabWidgetDiagnostikDAPDiagnostik">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>100</y>
+           <width>691</width>
+           <height>391</height>
+          </rect>
+         </property>
+         <property name="currentIndex">
+          <number>3</number>
+         </property>
+         <widget class="QWidget" name="tab_5">
+          <attribute name="title">
+           <string>DAP Diagnostik Score</string>
+          </attribute>
+          <widget class="QListWidget" name="lwEigenschaftDAPDScore">
+           <property name="geometry">
+            <rect>
+             <x>460</x>
+             <y>10</y>
+             <width>221</width>
+             <height>351</height>
+            </rect>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::MultiSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectItems</enum>
+           </property>
+           <property name="textElideMode">
+            <enum>Qt::ElideNone</enum>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QListWidget" name="lwKapitelDAPDScore">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>211</width>
+             <height>351</height>
+            </rect>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+           <property name="selectionRectVisible">
+            <bool>false</bool>
+           </property>
+          </widget>
+          <widget class="QListWidget" name="lwElementDAPDScore">
+           <property name="geometry">
+            <rect>
+             <x>230</x>
+             <y>10</y>
+             <width>221</width>
+             <height>351</height>
+            </rect>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_6">
+          <attribute name="title">
+           <string>DAP Diagnostik Auswertung separat</string>
+          </attribute>
+          <widget class="QScrollArea" name="scrollArea_3">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>671</width>
+             <height>341</height>
+            </rect>
+           </property>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAsNeeded</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_4">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>-631</y>
+              <width>651</width>
+              <height>968</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_35">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_26">
+               <item>
+                <widget class="QGroupBox" name="groupBox_26">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Mobilität und Tonus</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_45">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_30">
+                    <item>
+                     <widget class="QLabel" name="lblStatusMobilitaetTonusDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreMobilitaetTonusDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_8">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Mimik</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_46">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_31">
+                    <item>
+                     <widget class="QLabel" name="lblStatusMimikDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreMimikDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_25">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Kommunikation</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_47">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_32">
+                    <item>
+                     <widget class="QLabel" name="lblStatusKommunikationDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreKommunikationDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_9">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>190</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Atmung</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_48">
+                  <item>
+                   <widget class="QTableWidget" name="twScoreAtmungDAPD">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <attribute name="horizontalHeaderDefaultSectionSize">
+                     <number>200</number>
+                    </attribute>
+                    <attribute name="verticalHeaderVisible">
+                     <bool>false</bool>
+                    </attribute>
+                    <column>
+                     <property name="text">
+                      <string>Eigenschaft</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Auswertung</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Score</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_10">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Phonation</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_49">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_17">
+                    <item>
+                     <widget class="QLabel" name="lblStatusPhonationDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScorePhonationDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_11">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Prosodie</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_50">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_20">
+                    <item>
+                     <widget class="QLabel" name="lblStatusProsodieDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreProsodieDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_12">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Artikulation</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_51">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_21">
+                    <item>
+                     <widget class="QLabel" name="lblStatusArtikulationDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lblScoreArtikulationDAPD">
+                      <property name="font">
+                       <font>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_27">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>220</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>orofaciale Muskulatur</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_52">
+                  <item>
+                   <widget class="QTableWidget" name="twScoreOMDAPD">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <attribute name="horizontalHeaderDefaultSectionSize">
+                     <number>200</number>
+                    </attribute>
+                    <attribute name="verticalHeaderVisible">
+                     <bool>false</bool>
+                    </attribute>
+                    <column>
+                     <property name="text">
+                      <string>Eigenschaft</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Auswertung</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Score</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_18">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>130</height>
+                  </size>
+                 </property>
+                 <property name="title">
+                  <string>Reflexe</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_36">
+                  <item>
+                   <widget class="QTableWidget" name="twScoreReflexeDAPD">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <attribute name="horizontalHeaderDefaultSectionSize">
+                     <number>200</number>
+                    </attribute>
+                    <attribute name="verticalHeaderVisible">
+                     <bool>false</bool>
+                    </attribute>
+                    <column>
+                     <property name="text">
+                      <string>Neue Spalte</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Eigenschaft</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Score</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_7">
+          <attribute name="title">
+           <string>DAP Diagnostik Auswertung insgesamt</string>
+          </attribute>
+          <widget class="QWidget" name="layoutWidget_116">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>661</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_24">
+            <item>
+             <widget class="QLabel" name="lblStatusGesamtDAPD">
+              <property name="font">
+               <font>
+                <pointsize>16</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lblScoreGesamtDAPD">
+              <property name="font">
+               <font>
+                <pointsize>16</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_8">
+          <attribute name="title">
+           <string>DAP Therapie</string>
+          </attribute>
+          <widget class="QScrollArea" name="scrollArea_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>671</width>
+             <height>341</height>
+            </rect>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents_2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>-595</y>
+              <width>651</width>
+              <height>932</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_27">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_28">
+               <item>
+                <widget class="QGroupBox" name="groupBox_19">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Mobilität und Tonus</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_29">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapieMobilitaetTonusDAPD">
+                    <property name="itemAlignment">
+                     <set>Qt::AlignRight</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_35">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Mimik</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_39">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapieMimikDAPD">
+                    <property name="itemAlignment">
+                     <set>Qt::AlignRight</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_28">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Kommunikation</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_38">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapieKommunikationDAPD">
+                    <property name="itemAlignment">
+                     <set>Qt::AlignRight</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_23">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Atmung</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_33">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapieAtmungDAPD">
+                    <property name="itemAlignment">
+                     <set>Qt::AlignRight</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_20">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Phonation</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_30">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapiePhonationDAPD"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_21">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Prosodie</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_31">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapieProsodieDAPD"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_22">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Artikulation</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_32">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapieArtikulationDAPD"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_36">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>orofaciale Muskulatur</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_40">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapieOMDAPD"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_24">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Reflexe</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_34">
+                  <item>
+                   <widget class="QListWidget" name="lwTherapieReflexeDAPD"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <zorder>layoutWidget</zorder>
+    <zorder>layoutWidget</zorder>
+    <zorder>layoutWidget_11</zorder>
+    <zorder>tabWidget</zorder>
+   </widget>
+   <widget class="QWidget" name="page2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>721</width>
+      <height>597</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>Seite 1</string>
+    </attribute>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>361</x>
+       <y>1</y>
+       <width>361</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_93">
+      <item>
+       <widget class="QLabel" name="label_21">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font-size:30px;background-color:grey;color:white;</string>
+        </property>
+        <property name="text">
+         <string>Medical REPORT</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>50</y>
+       <width>711</width>
+       <height>117</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_26">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>PatientenID</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Vorname</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_11">
+        <item>
+         <widget class="QLineEdit" name="lePatientenID">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:black;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lePatVorname">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:black;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_22">
+          <property name="text">
+           <string>Geburtsdatum</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_23">
+          <property name="text">
+           <string>Nachname</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QLineEdit" name="lePatGebDatum">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:black;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lePatName">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color:black;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QGraphicsView" name="graphicsView">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>341</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>341</width>
+       <height>41</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:url(//192.168.100.10/q/SLW/Template/qscript/Acqua/kzg_LOGO_grunerbalken41_41_v2.jpg);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>711</width>
+       <height>249</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_19">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <item>
+           <widget class="QLabel" name="label_26">
+            <property name="styleSheet">
+             <string notr="true">font-weight:bold;font-size:14px;</string>
+            </property>
+            <property name="text">
+             <string>Diagnose</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="pteDiagnose">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color:black;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_15">
+          <item>
+           <widget class="QLabel" name="label_29">
+            <property name="styleSheet">
+             <string notr="true">font-weight:bold;font-size:14px;</string>
+            </property>
+            <property name="text">
+             <string>Therapie</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="pteTherapie">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color:black;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_20">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <widget class="QLabel" name="label_27">
+            <property name="styleSheet">
+             <string notr="true">font-weight:bold;font-size:14px;</string>
+            </property>
+            <property name="text">
+             <string>ICD</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="pteICD"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_16">
+          <item>
+           <widget class="QLabel" name="label0">
+            <property name="styleSheet">
+             <string notr="true">font-weight:bold;font-size:14px;</string>
+            </property>
+            <property name="text">
+             <string>Mode</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="pteMode"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_21">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_14">
+          <item>
+           <widget class="QLabel" name="label_28">
+            <property name="styleSheet">
+             <string notr="true">font-weight:bold;font-size:14px;</string>
+            </property>
+            <property name="text">
+             <string>Kommentar</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="pteKommentar"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_17">
+          <item>
+           <widget class="QLabel" name="label1">
+            <property name="styleSheet">
+             <string notr="true">font-weight:bold;font-size:14px;</string>
+            </property>
+            <property name="text">
+             <string>Evaluation</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="pteEvaluation"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>430</y>
+       <width>711</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_18">
+      <item>
+       <widget class="QLabel" name="label2">
+        <property name="styleSheet">
+         <string notr="true">font-weight:bold;font-size:14px;</string>
+        </property>
+        <property name="text">
+         <string>Kommentar</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPlainTextEdit" name="pteKommentar2">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="lblTooltip">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>660</y>
+     <width>721</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>toolBox</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>lblTooltip</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

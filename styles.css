@@ -1,0 +1,1102 @@
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#e7edf6;color:#102033}
+:root{--dark:#0f172a;--dark2:#111827;--blue:#2563eb;--cyan:#0891b2;--line:#d9e2ef;--muted:#64748b;--danger:#dc2626;--card:#fff}
+#app-shell{display:grid;grid-template-columns:340px minmax(0,1fr);min-height:100vh}
+.sidebar{background:linear-gradient(180deg,#0f172a,#111827);color:white;padding:18px;height:100vh;position:sticky;top:0;overflow:auto;display:flex;flex-direction:column;gap:18px}
+.brand{display:flex;gap:12px;align-items:center}.brand-mark{width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;font-weight:800}
+.brand h1{margin:0;font-size:18px}.brand p{margin:4px 0 0;color:#cbd5e1;font-size:13px}
+.module-list{display:flex;flex-direction:column;gap:8px}.module-btn{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:white;border-radius:16px;padding:12px;text-align:left;cursor:pointer}
+.module-btn b{display:block;font-size:15px}.module-btn span{font-size:12px;color:#cbd5e1}.module-btn.active{background:linear-gradient(135deg,#2563eb,#0284c7);box-shadow:0 12px 28px rgba(37,99,235,.28)}
+.panel{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:14px}.panel h2{margin:0 0 10px;font-size:15px}.panel button,.panel select{width:100%;margin-top:8px}
+button,.importBtn{border:0;background:#2563eb;color:white;border-radius:13px;padding:10px 12px;cursor:pointer;font:inherit}.danger{background:var(--danger)}select,input,textarea{font:inherit;border:1px solid var(--line);border-radius:11px;padding:9px 10px;min-width:0;background:white}.importBtn input{display:none}
+.score-value{font-size:56px;font-weight:900;line-height:1}.score-panel p{margin:8px 0 0;color:#cbd5e1;font-size:13px}
+.workspace{min-width:0}.topbar{height:92px;padding:16px 24px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:20px;position:sticky;top:0;z-index:10}
+.topbar h2{margin:0;font-size:25px}.topbar p{margin:4px 0 0;color:var(--muted)}.actions{display:flex;gap:10px;align-items:center}.actions input{width:300px}
+.status{display:none;margin:16px 24px 0;padding:12px 14px;border-radius:16px}.status.show{display:block}.status.ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}.status.warn{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412}.status.err{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}
+.content{padding:24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.form-card,.meta-card{background:white;border:1px solid var(--line);border-radius:26px;box-shadow:0 18px 46px rgba(15,23,42,.08)}
+.form-card{padding:18px;min-height:calc(100vh - 140px);overflow:auto}.meta-card{padding:18px;position:sticky;top:116px}.meta-card h3{margin:0 0 12px}.meta-card p{font-size:13px;line-height:1.45;color:var(--muted)}.kv{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #edf2f7}.kv span{color:var(--muted)}
+.qt-root{display:flex;flex-direction:column;gap:14px}.qt-widget{min-width:0}.qt-group{border:1px solid #dbe3ef;background:#fbfdff;border-radius:18px;padding:14px}.qt-group-title{font-weight:800;margin-bottom:12px;color:#1e293b}
+.qt-layout{display:flex;gap:10px}.qt-layout.vbox{flex-direction:column}.qt-layout.hbox{flex-direction:row;align-items:center;flex-wrap:wrap}.qt-layout.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:center;gap:10px}.qt-item{min-width:0}
+.qt-page-shell{display:grid;grid-template-columns:245px minmax(0,1fr);gap:16px}.qt-tabbar{background:#f1f5f9;border:1px solid #dbe3ef;border-radius:20px;padding:10px;display:flex;flex-direction:column;gap:7px;max-height:calc(100vh - 190px);overflow:auto}.qt-tab-button{background:white;color:#0f172a;border:1px solid #dbe3ef;box-shadow:none;text-align:left;padding:9px 10px;border-radius:12px}.qt-tab-button.active{background:#2563eb;color:white}
+.qt-tab-content{min-width:0}.qt-scroll{overflow:auto;max-height:700px;border:1px solid #e2e8f0;border-radius:18px;padding:12px;background:white}
+label.qt-label{white-space:pre-line;line-height:1.25;color:#1f2937}.qt-field,.qt-select,.qt-textarea{width:100%}.qt-textarea{min-height:82px;resize:vertical}.qt-date{width:180px}.qt-checkbox{display:flex;align-items:center;gap:8px}.qt-progress{width:100%;height:20px}.qt-button{background:#334155}.calc-hidden{display:none!important}
+.search-hidden{display:none!important}.empty-field{outline:2px solid #f59e0b;background:#fffbeb}
+@media(max-width:1350px){#app-shell{grid-template-columns:295px minmax(0,1fr)}.content{grid-template-columns:1fr}.meta-card{position:static}}
+
+/* PATCH: collapsible right panel + horizontal scrolling */
+.content {
+  overflow: hidden;
+}
+
+.form-card {
+  overflow: auto;
+}
+
+#renderRoot {
+  overflow-x: auto;
+  overflow-y: visible;
+  min-width: max-content;
+  padding-bottom: 12px;
+}
+
+.meta-card.collapsed {
+  display: none;
+}
+
+.content.meta-hidden {
+  grid-template-columns: 1fr;
+}
+
+.toggle-meta-btn {
+  background: #475569;
+}
+
+.qt-root {
+  min-width: 1400px;
+}
+
+
+/* PATCH v3: Kapitel/Tabs dauerhaft sichtbar */
+.qt-page-shell {
+  align-items: start;
+}
+
+.qt-tabbar {
+  position: sticky;
+  top: 104px;
+  align-self: start;
+  z-index: 6;
+  max-height: calc(100vh - 128px);
+}
+
+.qt-tab-button {
+  position: relative;
+}
+
+.qt-tab-button.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  bottom: 9px;
+  width: 4px;
+  border-radius: 4px;
+  background: white;
+}
+
+#renderRoot {
+  scroll-padding-left: 260px;
+}
+
+
+/* PATCH v4: Kapitel links stabil halten, auch beim horizontalen Scrollen */
+.form-card {
+  overflow: auto;
+}
+
+#renderRoot {
+  min-width: 0;
+  overflow-x: visible;
+}
+
+.qt-root {
+  min-width: 0;
+}
+
+.qt-page-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(1100px, 1fr);
+  gap: 16px;
+  align-items: start;
+  min-width: 1380px;
+}
+
+.qt-tabbar {
+  position: sticky;
+  left: 0;
+  top: 104px;
+  z-index: 20;
+  align-self: start;
+  max-height: calc(100vh - 128px);
+  overflow-y: auto;
+  box-shadow: 10px 0 18px rgba(15,23,42,.08);
+}
+
+.qt-tab-content {
+  min-width: 0;
+}
+
+/* optische Trennung zwischen fixer Kapitelspalte und Inhalt */
+.qt-page-shell::before {
+  content: "";
+  position: sticky;
+  left: 260px;
+  width: 1px;
+  height: calc(100vh - 128px);
+  background: #dbe3ef;
+  z-index: 19;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  pointer-events: none;
+}
+
+
+/* PATCH v5: Kapitel wieder übersichtlich oben, Inhalt bekommt Breite zurück */
+.qt-page-shell {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  min-width: 1180px !important;
+}
+
+.qt-page-shell::before {
+  display: none !important;
+}
+
+.qt-tabbar {
+  position: sticky !important;
+  top: 92px !important;
+  left: auto !important;
+  z-index: 30 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-height: none !important;
+  min-height: 56px !important;
+  align-items: center !important;
+  background: #f8fafc !important;
+  border: 1px solid #dbe3ef !important;
+  border-radius: 18px !important;
+  padding: 8px !important;
+  box-shadow: 0 10px 24px rgba(15,23,42,.08) !important;
+}
+
+.qt-tab-button {
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+  min-width: 90px !important;
+  text-align: center !important;
+  padding: 9px 12px !important;
+}
+
+.qt-tab-button.active::before {
+  display: none !important;
+}
+
+.qt-tab-button.active {
+  box-shadow: 0 6px 16px rgba(37,99,235,.22) !important;
+}
+
+.qt-tab-content {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+#renderRoot {
+  min-width: 1180px !important;
+  overflow-x: visible !important;
+  scroll-padding-left: 0 !important;
+}
+
+.qt-root {
+  min-width: 1180px !important;
+}
+
+/* verschachtelte Tabgruppen etwas kompakter, damit man nicht suchen muss */
+.qt-tab-content .qt-page-shell {
+  min-width: 0 !important;
+}
+
+.qt-tab-content .qt-tabbar {
+  top: 154px !important;
+  min-height: 48px !important;
+  padding: 6px !important;
+  border-radius: 14px !important;
+  background: #eef5ff !important;
+}
+
+.qt-tab-content .qt-tab-button {
+  min-width: 72px !important;
+  padding: 7px 10px !important;
+  font-size: 13px !important;
+}
+
+/* Formularinhalt wieder großzügig */
+.form-card {
+  overflow: auto !important;
+}
+
+.qt-scroll {
+  max-height: none !important;
+}
+
+
+/* PATCH v6: separate Kapitel-Scrollleiste + Unterkapitel als Hauptleiste */
+.qt-tabbar {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin;
+  overscroll-behavior-x: contain;
+}
+
+.qt-tabbar::-webkit-scrollbar {
+  height: 10px;
+}
+
+.qt-tabbar::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 999px;
+}
+
+.qt-tabbar::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 999px;
+}
+
+/* Für ausgelagerte Module: äußere Ein-Seiten-Leiste optisch entfernen */
+body.subtabs-promoted .qt-root > .qt-page-shell > .qt-tabbar {
+  display: none !important;
+}
+
+body.subtabs-promoted .qt-root > .qt-page-shell {
+  display: block !important;
+  min-width: 1180px !important;
+}
+
+body.subtabs-promoted .qt-root > .qt-page-shell > .qt-tab-content {
+  width: 100% !important;
+}
+
+/* Die erste innere Unterkapitel-Leiste wird zur Hauptleiste */
+body.subtabs-promoted .qt-root > .qt-page-shell > .qt-tab-content .qt-page-shell:first-child > .qt-tabbar,
+body.subtabs-promoted .qt-root > .qt-page-shell > .qt-tab-content .qt-page-shell .qt-tabbar:first-child {
+  top: 92px !important;
+  background: #f8fafc !important;
+  border: 1px solid #dbe3ef !important;
+  border-radius: 18px !important;
+  min-height: 56px !important;
+  padding: 8px !important;
+  z-index: 32 !important;
+}
+
+/* Inhalte darunter sauber trennen */
+body.subtabs-promoted .qt-root > .qt-page-shell > .qt-tab-content .qt-page-shell:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+
+/* PATCH v7: echte separate Kapitel-Scrollbar + echte Unterkapitel-Promotion */
+
+.qt-page-shell {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  min-width: 0 !important;
+}
+
+.qt-tabbar {
+  position: sticky !important;
+  top: 92px !important;
+  z-index: 40 !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+
+  width: min(100%, calc(100vw - 410px)) !important;
+  max-width: min(100%, calc(100vw - 410px)) !important;
+  min-width: 0 !important;
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin;
+  overscroll-behavior-x: contain;
+
+  background: #f8fafc !important;
+  border: 1px solid #dbe3ef !important;
+  border-radius: 18px !important;
+  padding: 8px !important;
+  box-shadow: 0 10px 24px rgba(15,23,42,.08) !important;
+}
+
+.qt-tabbar::-webkit-scrollbar { height: 10px; }
+.qt-tabbar::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 999px; }
+.qt-tabbar::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 999px; }
+
+.qt-tab-button {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  min-width: 92px !important;
+  text-align: center !important;
+}
+
+.qt-tab-content {
+  min-width: 1180px !important;
+}
+
+.form-card {
+  overflow: auto !important;
+}
+
+#renderRoot {
+  min-width: 0 !important;
+  overflow: visible !important;
+}
+
+.qt-root {
+  min-width: 0 !important;
+}
+
+.content.meta-hidden .qt-tabbar {
+  width: min(100%, calc(100vw - 390px)) !important;
+  max-width: min(100%, calc(100vw - 390px)) !important;
+}
+
+body.promoted-real-subtabs .qt-root > .qt-page-shell > .qt-tabbar {
+  top: 92px !important;
+}
+
+body.promoted-real-subtabs .qt-root > .qt-page-shell > .qt-tab-content {
+  min-width: 1180px !important;
+}
+
+.qt-tab-content .qt-tabbar {
+  top: 154px !important;
+  min-height: 46px !important;
+  padding: 6px !important;
+  border-radius: 14px !important;
+  background: #eef5ff !important;
+}
+
+.qt-tab-content .qt-tab-button {
+  min-width: 78px !important;
+  padding: 7px 10px !important;
+  font-size: 13px !important;
+}
+
+
+/* PATCH v8 */
+body.pseudo-tabs-removed .qt-root > .qt-page-shell > .qt-tabbar {
+  top: 92px !important;
+  background: #f8fafc !important;
+}
+
+textarea[data-auto-filled="1"],
+input[data-auto-filled="1"] {
+  background: #f0fdf4 !important;
+  border-color: #86efac !important;
+}
+
+
+/* PATCH v9: erweiterte Auto-Regeln */
+textarea[data-auto-filled="1"],
+input[data-auto-filled="1"] {
+  background: #f0fdf4 !important;
+  border-color: #86efac !important;
+}
+
+textarea[data-manual-edited="1"],
+input[data-manual-edited="1"] {
+  background: #fff7ed !important;
+  border-color: #fdba74 !important;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: .62;
+  background: #f1f5f9;
+}
+
+
+/* PATCH v10: Kapitelwechsel-Vorschläge */
+.chapter-suggestions {
+  display: none;
+  margin: 14px 24px 0;
+  padding: 12px;
+  border-radius: 18px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e3a8a;
+  box-shadow: 0 8px 20px rgba(37,99,235,.08);
+}
+
+.chapter-suggestions.show {
+  display: block;
+}
+
+.chapter-suggestions .title {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.chapter-suggestions .suggestion-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chapter-suggestions button {
+  background: #2563eb;
+  color: white;
+  border-radius: 999px;
+  padding: 7px 11px;
+  box-shadow: none;
+}
+
+.chapter-suggestions .hint {
+  font-size: 13px;
+  color: #475569;
+  margin-top: 8px;
+}
+
+
+/* PATCH v11: alternative Kapitelauswahl */
+#chapterSelect {
+  width: 240px;
+  max-width: 240px;
+  background: #ffffff;
+  border-color: #bfdbfe;
+}
+
+@media(max-width:1350px){
+  #chapterSelect { width: 190px; }
+}
+
+
+/* PATCH v12: Seite 1/Seite 2 erhalten, nur innere Schein-Kapitel entfernen */
+.pseudo-hidden { display: none !important; }
+body.separate-module .qt-root > .qt-page-shell > .qt-tabbar {
+  display: flex !important;
+  background: #eef2ff !important;
+  border-color: #c7d2fe !important;
+}
+body.separate-module .qt-root > .qt-page-shell > .qt-tabbar .qt-tab-button {
+  min-width: 110px !important;
+  font-weight: 700 !important;
+}
+body.separate-module .qt-root > .qt-page-shell > .qt-tab-content .qt-tabbar {
+  top: 154px !important;
+}
+body.pseudo-tabs-removed .qt-root > .qt-page-shell > .qt-tab-content .qt-tabbar {
+  background: #f8fafc !important;
+  border-color: #dbe3ef !important;
+}
+
+
+/* PATCH v13: echte Einstiegskapitel automatisch öffnen */
+.entry-tabbar-hidden {
+  display: none !important;
+}
+
+body.entry-tab-auto-opened .chapter-suggestions {
+  margin-top: 10px;
+}
+
+/* Seite 1/Seite 2 soll sichtbar bleiben, aber alte Modul-Scheinleiste nicht */
+
+
+/* PATCH v14 */
+
+/* Infofeld standardmäßig ausgeblendet */
+.meta-card {
+  display: none !important;
+}
+
+.content {
+  grid-template-columns: 1fr !important;
+}
+
+#toggleMetaBtn {
+  background: #2563eb !important;
+}
+
+/* Einstiegskapitel nicht komplett verstecken */
+.entry-tabbar-hidden {
+  opacity: 0.25;
+}
+
+/* aber nur die irrelevanten Buttons ausblenden */
+.entry-tabbar-hidden .qt-tab-button {
+  display: none !important;
+}
+
+.entry-tabbar-hidden .qt-tab-button.active,
+.entry-tabbar-hidden .qt-tab-button[data-auto-opened-entry-tab="1"] {
+  display: inline-flex !important;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* Inhalte sicher sichtbar */
+.qt-tab-pane {
+  display: block !important;
+}
+
+.qt-tab-pane.search-hidden {
+  display: none !important;
+}
+
+
+/* PATCH v15: Prozesstreue + Auto-Klick-Hinweis */
+.process-fidelity {
+  margin: 14px 24px 0;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 1px solid #dbe3ef;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 20px rgba(15,23,42,.05);
+}
+
+.process-fidelity b {
+  color: #1e293b;
+}
+
+.process-fidelity span {
+  font-weight: 800;
+  color: #2563eb;
+  min-width: 54px;
+}
+
+.pfbar {
+  height: 12px;
+  flex: 1;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#processFidelityBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #22c55e);
+  border-radius: 999px;
+  transition: width .2s ease;
+}
+
+.entry-autoclick-active {
+  outline: 3px solid #22c55e !important;
+  outline-offset: 2px;
+}
+
+
+/* PATCH v16: Prozesstreue links unter Live Score + Hauptleiste sichtbar lassen */
+.score-panel .process-fidelity {
+  display: block !important;
+  margin: 12px 0 0 !important;
+  padding: 12px !important;
+  border-radius: 16px !important;
+  background: rgba(255,255,255,.08) !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.score-panel .process-fidelity b {
+  display: block;
+  color: #e2e8f0 !important;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.score-panel .process-fidelity span {
+  display: block;
+  color: white !important;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.score-panel .pfbar {
+  height: 10px;
+  width: 100%;
+  background: rgba(255,255,255,.18) !important;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.score-panel #processFidelityBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #38bdf8, #22c55e) !important;
+  border-radius: 999px;
+}
+
+/* Haupt-/Pseudo-Kapitelleiste vorerst sichtbar lassen */
+.entry-tabbar-hidden {
+  display: flex !important;
+  opacity: 1 !important;
+}
+
+.entry-tabbar-hidden .qt-tab-button {
+  display: inline-flex !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.entry-tabbar-hidden .qt-tab-button[data-auto-opened-entry-tab="1"],
+.entry-autoclick-active {
+  outline: 3px solid #22c55e !important;
+  outline-offset: 2px;
+}
+
+
+/* PATCH v17: Kapitelhinweise nur bei echtem Treffer */
+.chapter-suggestions:not(.show) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+
+/* PATCH v18: Hauptkapitelleiste bleibt im DOM, wird nur visuell ausgeblendet */
+.entry-mainbar-hidden {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Fallback: falls alte Klassen noch gesetzt sind, nicht display:none verwenden */
+.entry-tabbar-hidden {
+  display: flex !important;
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.entry-tabbar-hidden .qt-tab-button {
+  display: inline-flex !important;
+}
+
+/* Die echte Unterkapitelleiste soll weiterhin normal sichtbar bleiben */
+.qt-tabbar:not(.entry-mainbar-hidden):not(.entry-tabbar-hidden) {
+  visibility: visible;
+}
+
+
+/* PATCH v19: Prozesstreue optisch zuverlässig aktualisieren */
+#processFidelityBar {
+  min-width: 0;
+  transition: width .18s ease !important;
+}
+
+.score-panel .process-fidelity {
+  contain: layout paint;
+}
+
+
+/* PATCH v20: Prozesstreue robust sichtbar */
+#processFidelityText {
+  color: #ffffff !important;
+}
+
+#processFidelityBar {
+  display: block !important;
+  transition: width .12s linear !important;
+}
+
+
+/* PATCH v21: Prozesstreue fixiert unten rechts im Inhaltsbereich */
+.floating-pf {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 80 !important;
+
+  width: 340px !important;
+  margin: 0 !important;
+  padding: 14px 16px !important;
+  border-radius: 20px !important;
+
+  display: block !important;
+  background: rgba(15, 23, 42, .94) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  box-shadow: 0 20px 50px rgba(15,23,42,.35) !important;
+  backdrop-filter: blur(12px);
+}
+
+.floating-pf b {
+  display: block !important;
+  color: #cbd5e1 !important;
+  font-size: 13px !important;
+  margin-bottom: 5px !important;
+}
+
+.floating-pf span {
+  display: block !important;
+  color: #fff !important;
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  margin-bottom: 9px !important;
+}
+
+.floating-pf .pfbar {
+  width: 100% !important;
+  height: 12px !important;
+  background: rgba(255,255,255,.18) !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+}
+
+.floating-pf #processFidelityBar {
+  display: block !important;
+  height: 100% !important;
+  min-width: 0;
+  width: 0%;
+  background: linear-gradient(90deg, #38bdf8, #22c55e) !important;
+  border-radius: 999px !important;
+  transition: width .15s ease !important;
+}
+
+@media(max-width:900px){
+  .floating-pf {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    width: auto !important;
+  }
+}
+
+
+/* PATCH v23: v15-Prozesstreueberechnung + stabile Anzeige */
+.floating-pf {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 90 !important;
+  width: 340px !important;
+  display: block !important;
+}
+
+#processFidelityText {
+  color: #fff !important;
+}
+
+#processFidelityBar {
+  display: block !important;
+  height: 100% !important;
+  transition: width .18s ease !important;
+}
+
+
+/* PATCH v24: Zwischenscores und Rücksprungbuttons */
+input[data-auto-filled="1"] {
+  background: #f0fdf4 !important;
+  border-color: #86efac !important;
+}
+
+button[id*="Return"],
+button[id*="return"] {
+  background: #475569 !important;
+}
+
+
+/* PATCH v27: nur Combobox-/Inputbreiten vereinheitlichen */
+
+/* Eingabezeilen nicht komplett umbauen */
+.qt-item,
+.qt-row,
+.qt-inline,
+.qt-hbox {
+  align-items: flex-start !important;
+}
+
+/* Labels mit fixer Breite */
+.qt-label,
+.qt-item > label,
+.qt-item label {
+  display: inline-block !important;
+  width: 260px !important;
+  min-width: 260px !important;
+  vertical-align: top !important;
+}
+
+/* Selects und Eingabefelder gleiche Breite */
+.qt-item select,
+.qt-item input[type="text"],
+.qt-item textarea,
+.qt-item .qt-input,
+select,
+input[type="text"],
+textarea {
+  width: 420px !important;
+  max-width: 420px !important;
+  box-sizing: border-box !important;
+
+  border-radius: 10px !important;
+  border: 1px solid #cbd5e1 !important;
+  padding: 8px 10px !important;
+  background: #fff !important;
+}
+
+/* Mehrzeilige Texte größer */
+textarea {
+  min-height: 88px !important;
+}
+
+/* Checkboxen/Radios nicht beeinflussen */
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Kleine Bildschirme */
+@media(max-width:1200px){
+  .qt-label,
+  .qt-item > label,
+  .qt-item label {
+    width: 180px !important;
+    min-width: 180px !important;
+  }
+
+  .qt-item select,
+  .qt-item input[type="text"],
+  .qt-item textarea,
+  .qt-item .qt-input,
+  select,
+  input[type="text"],
+  textarea {
+    width: min(100%, 420px) !important;
+    max-width: 100% !important;
+  }
+}
+
+@media(max-width:850px){
+  .qt-label,
+  .qt-item > label,
+  .qt-item label {
+    display: block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .qt-item select,
+  .qt-item input[type="text"],
+  .qt-item textarea,
+  .qt-item .qt-input,
+  select,
+  input[type="text"],
+  textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+
+/* PATCH v28: Comboboxen rechtsbündig + alte Aktionsbuttons aktiv */
+.qt-item {
+  justify-content: flex-start !important;
+}
+
+/* rechter Eingabebereich einheitlich rechts ausrichten */
+.qt-item select,
+.qt-item input[type="text"],
+.qt-item textarea,
+.qt-item .qt-input,
+select,
+input[type="text"],
+textarea {
+  display: inline-block !important;
+  margin-left: auto !important;
+}
+
+/* Button-Zeilen etwas hübscher */
+button[id*="Print"],
+button[id*="print"],
+button[id*="Save"],
+button[id*="save"],
+button[id*="Cancel"],
+button[id*="cancel"],
+button[id*="Export"],
+button[id*="export"],
+button[id*="Abbrechen"],
+button[id*="Speichern"],
+button[id*="Drucken"] {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+/* Druckansicht */
+@media print {
+  .sidebar,
+  .topbar,
+  .chapter-suggestions,
+  .floating-pf,
+  .meta-card,
+  #statusBox {
+    display: none !important;
+  }
+
+  .workspace,
+  .content,
+  .form-card {
+    display: block !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+  }
+
+  body {
+    background: white !important;
+  }
+}
+
+
+/* PATCH v38: Infofeld vollständig entfernt */
+#infoPanel,
+#infoBox,
+.info-panel,
+.info-box,
+.info-toggle,
+button[id*="Info"],
+button[id*="info"] {
+  display: none !important;
+}
+
+
+/* PATCH v39: Seite 1 gesperrte Felder */
+.auto-page1-field {
+  background: #f0fdf4 !important;
+  border-color: #86efac !important;
+}
+
+.unlocked-page1-field {
+  background: #fff7ed !important;
+  border-color: #fdba74 !important;
+}
+
+input[readonly].auto-page1-field,
+textarea[readonly].auto-page1-field {
+  cursor: default;
+}
+
+
+/* PATCH v40: automatisch vorbereitete Diagnose/Therapie */
+.auto-page1-field[data-auto-page1-diagnosis-therapy="1"],
+textarea[data-auto-page1-diagnosis-therapy="1"],
+input[data-auto-page1-diagnosis-therapy="1"] {
+  background: #eefdf5 !important;
+  border-color: #22c55e !important;
+}
+
+
+/* PATCH v41: Diagnose/Therapie live ersetzt */
+textarea[data-auto-page1-diagnosis-therapy="1"],
+input[data-auto-page1-diagnosis-therapy="1"] {
+  background: #ecfdf5 !important;
+  border-color: #22c55e !important;
+}
+
+textarea[data-manual-page1-edit="1"],
+input[data-manual-page1-edit="1"] {
+  background: #fff7ed !important;
+  border-color: #fdba74 !important;
+}
+
+
+/* PATCH v47: Darstellung zurück auf v45, nur Info entfernen */
+#toggleMetaBtn,
+button[id*="toggleMeta"],
+button[id*="Info"],
+button[id*="info"],
+.info-toggle,
+.meta-card,
+#infoPanel,
+#infoBox,
+.info-panel,
+.info-box {
+  display: none !important;
+}
+
+/* Ohne Infofeld volle Inhaltsbreite nutzen, ohne Formularlayout zu verändern */
+.content {
+  grid-template-columns: 1fr !important;
+}
+
+
+/* PATCH v48: Abschlusszeile entfernen */
+
+/* Direkte Felder */
+#renderRoot input[id*="Prozesstreue"],
+#renderRoot input[id*="prozesstreue"],
+#renderRoot input[id*="Process"],
+#renderRoot input[id*="process"],
+#renderRoot input[id*="AnzahlElemente"],
+#renderRoot input[id*="anzahlelemente"],
+#renderRoot input[id*="Gesamtscore"],
+#renderRoot input[id*="gesamtscore"],
+#renderRoot input[id*="GesamtScore"],
+#renderRoot input[id*="totalScore"],
+#renderRoot input[id*="TotalScore"] {
+  display: none !important;
+}
+
+/* Ganze Zeilen/Karten verstecken */
+#renderRoot .qt-item:has(input[id*="Prozesstreue"]),
+#renderRoot .qt-item:has(input[id*="prozesstreue"]),
+#renderRoot .qt-item:has(input[id*="Process"]),
+#renderRoot .qt-item:has(input[id*="process"]),
+#renderRoot .qt-item:has(input[id*="AnzahlElemente"]),
+#renderRoot .qt-item:has(input[id*="anzahlelemente"]),
+#renderRoot .qt-item:has(input[id*="Gesamtscore"]),
+#renderRoot .qt-item:has(input[id*="gesamtscore"]),
+#renderRoot .qt-item:has(input[id*="GesamtScore"]),
+#renderRoot .qt-item:has(input[id*="totalScore"]),
+#renderRoot .qt-item:has(input[id*="TotalScore"]) {
+  display: none !important;
+}
+
+
+/* PATCH v50: sichere Entfernung der Abschlusszeile */
+.summary-field-hidden,
+.summary-label-hidden,
+.summary-row-hidden {
+  display: none !important;
+}
+
+
+/* PATCH v51: Datensatz-Combobox links genauso breit wie Buttons */
+
+/* Linke Datensatz-/Storage-Spalte */
+.storage-panel select,
+#entrySelect,
+.left-panel select,
+.sidebar select {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+/* Falls die Buttons feste Breiten haben: gleiche Optik */
+.storage-panel button,
+.left-panel button,
+.sidebar button {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}

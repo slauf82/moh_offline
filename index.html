@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOH Full-HD Offline</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">MOH</div>
+        <div>
+          <h1>Medical Operation Handbook</h1>
+          <p>Full-HD Offline</p>
+        </div>
+      </div>
+
+      <nav id="moduleList" class="module-list"></nav>
+
+      <section class="panel">
+        <h2>Datensatz</h2>
+        <button id="newBtn">Neuer Eintrag</button>
+        <button id="saveBtn">Speichern / Update</button>
+        <button id="duplicateBtn">Duplizieren</button>
+        <button id="deleteBtn" class="danger">Löschen</button>
+        <select id="entrySelect"></select>
+      </section>
+
+      <section class="panel score-panel">
+        <h2>Live Score</h2>
+        <div id="liveScore" class="score-value">0</div>
+        <p id="scoreInfo">Automatische Berechnung aktiv</p>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <h2 id="moduleTitle">MOH</h2>
+          <p id="moduleSub">Bereit</p>
+        </div>
+        <div class="actions">
+          <select id="chapterSelect" title="Alternative Kapitelauswahl"><option value="">Kapitel wählen...</option></select>
+          <input id="searchInput" placeholder="Suchen: Feld, Text, ID ..." />
+          <button id="emptyBtn">Leere Felder markieren</button>
+          <button id="exportBtn">Export JSON</button>
+          <label class="importBtn">
+            Import JSON
+            <input type="file" id="importInput" accept="application/json" />
+          </label>
+        </div>
+      </header>
+
+      <div id="statusBox" class="status"></div>
+      <div id="chapterSuggestions" class="chapter-suggestions"></div>
+
+      <section class="content">
+        <div class="form-card">
+          <div id="renderRoot"></div>
+        </div>
+
+        <aside class="meta-card">
+          <h3>Info</h3>
+          <div class="kv"><span>ID</span><b id="idLabel">neu</b></div>
+          <div class="kv"><span>Modul</span><b id="moduleLabel">main</b></div>
+          <div class="kv"><span>Felder</span><b id="fieldCount">0</b></div>
+          <div class="kv"><span>Status</span><b id="dirtyLabel">unverändert</b></div>
+          <hr />
+          <p>
+            Diese Version ist vollständig offline. Die vier UI-Dateien sind fest in
+            <code>ui-data.js</code> eingebettet und zusätzlich im Ordner
+            <code>original</code> enthalten.
+          </p>
+          <p>
+            Der alte Berechnen-Button wird automatisch ausgeblendet. Jede Eingabe
+            triggert eine Live-Neuberechnung.
+          </p>
+        </aside>
+      </section>
+          <div id="processFidelity" class="process-fidelity floating-pf"><b>Prozesstreue</b><span id="processFidelityText">0%</span><div class="pfbar"><div id="processFidelityBar"></div></div></div>
+    </main>
+  </div>
+
+  <script src="ui-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
