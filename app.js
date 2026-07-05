@@ -1915,3 +1915,411 @@ document.addEventListener("DOMContentLoaded", cleanupV51LeftComboWidth);
 document.addEventListener("resize", cleanupV51LeftComboWidth);
 setInterval(cleanupV51LeftComboWidth, 1200);
 
+
+
+/* PATCH v52: Terminabhängige Enable-/Disable-Logik */
+
+function applyFollowupWorkflowLogic(){
+  const root = document.getElementById("renderRoot");
+  if(!root) return;
+
+  const allTabs = [...root.querySelectorAll(".qt-tab-button")];
+
+  const visitTabs = allTabs.filter(btn => {
+    const t = (btn.textContent || "").toLowerCase();
+    return (
+      /a\s*\d+/.test(t) ||
+      /termin\s*\d+/.test(t) ||
+      /kontrolle\s*\d+/.test(t) ||
+      /follow/.test(t)
+    );
+  });
+
+  const groups = {};
+
+  visitTabs.forEach(btn => {
+    const txt = (btn.textContent || "").trim();
+
+    let match = txt.match(/^([A-Za-zÄÖÜäöüß\s]+)\s*A\s*(\d+)/i);
+    if(!match){
+      match = txt.match(/^([A-Za-zÄÖÜäöüß\s]+)\s*(\d+)/i);
+    }
+
+    if(!match) return;
+
+    const prefix = match[1].trim().toLowerCase();
+    const num = parseInt(match[2], 10);
+
+    if(!groups[prefix]) groups[prefix] = [];
+    groups[prefix].push({btn, num});
+  });
+
+  Object.values(groups).forEach(group => {
+    group.sort((a,b) => a.num - b.num);
+
+    group.forEach((entry, idx) => {
+      if(idx === 0){
+        enableTab(entry.btn, true);
+        return;
+      }
+
+      const prev = group[idx - 1];
+      const prevDone = isTabCompleted(prev.btn);
+
+      enableTab(entry.btn, prevDone);
+    });
+  });
+}
+
+function isTabCompleted(tabBtn){
+  if(!tabBtn) return false;
+
+  const rootId = tabBtn.dataset.root;
+  const idx = tabBtn.dataset.idx;
+
+  const pane = document.querySelector(
+    `.qt-tab-pane[data-pane="${rootId}"][data-idx="${idx}"]`
+  );
+
+  if(!pane) return false;
+
+  const fields = [...pane.querySelectorAll("input[data-name], select[data-name], textarea[data-name]")]
+    .filter(el => !el.disabled);
+
+  if(!fields.length) return false;
+
+  let filled = 0;
+
+  fields.forEach(el => {
+    if(el.type === "checkbox" || el.type === "radio"){
+      if(el.checked) filled++;
+    } else if(el.tagName === "SELECT"){
+      if(el.selectedIndex > 0) filled++;
+    } else {
+      if(String(el.value || "").trim() !== "") filled++;
+    }
+  });
+
+  return filled >= Math.max(1, Math.floor(fields.length * 0.25));
+}
+
+function enableTab(btn, enabled){
+  if(!btn) return;
+
+  btn.disabled = !enabled;
+
+  if(enabled){
+    btn.classList.remove("followup-locked");
+    btn.style.opacity = "";
+    btn.style.pointerEvents = "";
+  } else {
+    btn.classList.add("followup-locked");
+    btn.style.opacity = "0.45";
+    btn.style.pointerEvents = "none";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", applyFollowupWorkflowLogic);
+document.addEventListener("input", () => setTimeout(applyFollowupWorkflowLogic, 120), true);
+document.addEventListener("change", () => setTimeout(applyFollowupWorkflowLogic, 120), true);
+document.addEventListener("click", () => setTimeout(applyFollowupWorkflowLogic, 120), true);
+
+setInterval(applyFollowupWorkflowLogic, 2500);
+
+
+
+window.MOH_VERSION = "1.1.1";
+
+/* v1.1.0: Prozesstreue 2.0 / Kapitelstatus */
+function v110ProcessFields(scope){
+  if(!scope) return [];
+  return [...scope.querySelectorAll("input[data-name], select[data-name], textarea[data-name]")]
+    .filter(el => !el.disabled)
+    .filter(el => !el.closest(".entry-mainbar-hidden"))
+    .filter(el => !el.closest(".entry-tabbar-hidden"))
+    .filter(el => !(typeof isScoreOutputField==="function" && isScoreOutputField((el.id||"").toLowerCase())))
+    .filter(el => !(typeof isAdministrativeField==="function" && isAdministrativeField(el)));
+}
+
+function v110Completed(el){
+  if(el.type==="checkbox" || el.type==="radio") return !!el.checked;
+  if(el.tagName==="SELECT") return el.selectedIndex > 0;
+  return String(el.value||"").trim() !== "";
+}
+
+function v110ChapterItems(){
+  const root = document.getElementById("renderRoot");
+  if(!root) return [];
+  const panes = [...root.querySelectorAll(".qt-tab-pane")];
+  const items = [];
+  panes.forEach(pane => {
+    const rootId = pane.dataset.pane, idx = pane.dataset.idx;
+    if(rootId === undefined || idx === undefined) return;
+    const fields = v110ProcessFields(pane);
+    if(!fields.length) return;
+    const btn = root.querySelector(`.qt-tab-button[data-root="${CSS.escape(rootId)}"][data-idx="${CSS.escape(idx)}"]`);
+    const title = (btn?.textContent || `Kapitel ${idx}`).trim();
+    items.push({pane, btn, title, fields});
+  });
+  if(!items.length) items.push({pane:root, btn:null, title:"Aktuelles Kapitel", fields:v110ProcessFields(root)});
+  return items;
+}
+
+function v110State(item){
+  const total = item.fields.length;
+  const done = item.fields.filter(v110Completed).length;
+  const percent = total ? Math.round(done*100/total) : 0;
+  const status = percent === 100 ? "complete" : (done > 0 ? "partial" : "open");
+  return {total, done, percent, status};
+}
+
+function updateChapterStatusPanel(){
+  const list = document.getElementById("chapterStatusList");
+  if(!list) return;
+  const items = v110ChapterItems();
+  list.innerHTML = items.map((item, i) => {
+    const st = v110State(item);
+    const icon = st.status==="complete" ? "🟢" : (st.status==="partial" ? "🟡" : "🔴");
+    if(item.btn) {
+      item.btn.dataset.validationIndex = String(i);
+      item.btn.classList.remove("chapter-status-complete","chapter-status-partial","chapter-status-open");
+      item.btn.classList.add("chapter-status-"+st.status);
+      item.btn.title = `${item.title}: ${st.done}/${st.total} Felder (${st.percent}%)`;
+    }
+    return `<button type="button" class="chapter-status-item chapter-status-${st.status}" data-validation-index="${i}">
+      <span>${icon}</span><span class="chapter-status-title">${escapeHtml(item.title)}</span><span class="chapter-status-percent">${st.percent}%</span>
+    </button>`;
+  }).join("");
+  list.querySelectorAll(".chapter-status-item").forEach(btn => {
+    btn.onclick = () => {
+      const item = items[Number(btn.dataset.validationIndex)];
+      if(item?.btn) item.btn.click();
+      setTimeout(highlightMissingFieldsForActiveChapter, 160);
+    };
+  });
+}
+
+function highlightMissingFieldsForActiveChapter(){
+  document.querySelectorAll(".field-missing-required,.field-complete-required").forEach(el => {
+    el.classList.remove("field-missing-required","field-complete-required");
+  });
+  const scope = (typeof activeScoreScope==="function" ? activeScoreScope() : document.getElementById("renderRoot"));
+  const fields = v110ProcessFields(scope);
+  fields.forEach(el => el.classList.add(v110Completed(el) ? "field-complete-required" : "field-missing-required"));
+  const first = fields.find(el => !v110Completed(el));
+  if(first){
+    first.scrollIntoView({behavior:"smooth", block:"center", inline:"nearest"});
+    v110Hint("Offenes Feld markiert.");
+  } else {
+    v110Hint("Aktuelles Kapitel wirkt vollständig.");
+  }
+}
+
+function jumpToFirstMissingField(){
+  for(const item of v110ChapterItems()){
+    const missing = item.fields.find(el => !v110Completed(el));
+    if(missing){
+      if(item.btn) item.btn.click();
+      setTimeout(() => {
+        missing.classList.add("field-missing-required");
+        missing.scrollIntoView({behavior:"smooth", block:"center", inline:"nearest"});
+        v110Hint(`Offenes Feld in "${item.title}" markiert.`);
+      }, 180);
+      return;
+    }
+  }
+  v110Hint("Keine offenen Felder gefunden.");
+}
+
+function v110Hint(text){
+  let box = document.getElementById("validationTooltip");
+  if(!box){
+    box = document.createElement("div");
+    box.id = "validationTooltip";
+    box.className = "validation-tooltip";
+    document.body.appendChild(box);
+  }
+  box.textContent = text;
+  box.classList.add("show");
+  clearTimeout(window.__v110HintTimer);
+  window.__v110HintTimer = setTimeout(()=>box.classList.remove("show"), 2200);
+}
+
+function setupValidation110(){
+  const jump = document.getElementById("jumpFirstMissingBtn");
+  if(jump && jump.dataset.bound110 !== "1"){
+    jump.dataset.bound110 = "1";
+    jump.onclick = jumpToFirstMissingField;
+  }
+  updateChapterStatusPanel();
+}
+
+function updateValidation110Soon(){
+  clearTimeout(window.__validation110Timer);
+  window.__validation110Timer = setTimeout(setupValidation110, 180);
+}
+
+document.addEventListener("DOMContentLoaded", updateValidation110Soon);
+document.addEventListener("input", updateValidation110Soon, true);
+document.addEventListener("change", updateValidation110Soon, true);
+document.addEventListener("click", ev => {
+  if(ev.target?.classList?.contains("qt-tab-button")){
+    setTimeout(()=>{updateChapterStatusPanel();highlightMissingFieldsForActiveChapter();}, 180);
+  }
+}, true);
+setInterval(updateValidation110Soon, 2500);
+
+
+
+
+/* v1.1.1: Regelbasierte Prozesstreue / strengere Folgetermin-Logik */
+
+function v111IsSystemOrAutoField(el){
+  const id = (el.id || "").toLowerCase();
+  const label = (typeof nearestLabelText === "function" ? nearestLabelText(el) : "").toLowerCase();
+  const hay = id + " " + label;
+
+  return (
+    // Scores / Anzeigen / technische Felder
+    hay.includes("score") ||
+    hay.includes("prozesstreue") ||
+    hay.includes("process") ||
+    hay.includes("anzahl der elemente") ||
+    hay.includes("anzahlelemente") ||
+    hay.includes("gesamt") ||
+
+    // automatisch generierte Felder
+    el.dataset.autoFilled === "1" ||
+    el.dataset.autoPage1DiagnosisTherapy === "1" ||
+    el.dataset.autoTodayDate === "1" ||
+
+    // System-/Meta-Felder
+    hay.includes("tagesdatum") ||
+    hay.includes("datum") ||
+    hay.includes("uhrzeit") ||
+    hay.includes("modus") ||
+    hay.includes("mode") ||
+    hay.includes("kapitel") ||
+    hay.includes("diagnose") ||
+    hay.includes("therapie") ||
+    hay.includes("empfehlung") ||
+    hay.includes("befundtext") ||
+    hay.includes("resulttext") ||
+    hay.includes("mego") ||
+    hay.includes("arzt") ||
+    hay.includes("user") ||
+    hay.includes("name")
+  );
+}
+
+function v111IsConditionallyRelevant(el){
+  // Feld zählt nur, wenn es sichtbar, aktiv und nicht in einem versteckten Pane liegt.
+  if(!el || el.disabled) return false;
+  if(el.closest(".entry-mainbar-hidden") || el.closest(".entry-tabbar-hidden")) return false;
+  if(el.closest(".qt-tab-pane.search-hidden")) return false;
+
+  // Auto-/System-/Scorefelder zählen nicht zur medizinischen Prozesstreue.
+  if(v111IsSystemOrAutoField(el)) return false;
+  if(typeof isScoreOutputField === "function" && isScoreOutputField((el.id || "").toLowerCase())) return false;
+  if(typeof isAdministrativeField === "function" && isAdministrativeField(el)) return false;
+
+  // Nur echte Eingabe-/Auswahlfelder zählen.
+  if(!(el.matches("input[data-name], select[data-name], textarea[data-name]"))) return false;
+
+  return true;
+}
+
+function v111FieldCompleted(el){
+  if(el.type === "checkbox" || el.type === "radio") return !!el.checked;
+  if(el.tagName === "SELECT") return el.selectedIndex > 0;
+  return String(el.value || "").trim() !== "";
+}
+
+function v111ProcessFields(scope){
+  if(!scope) return [];
+  return [...scope.querySelectorAll("input[data-name], select[data-name], textarea[data-name]")]
+    .filter(v111IsConditionallyRelevant);
+}
+
+function v111ChapterCompletion(scope){
+  const fields = v111ProcessFields(scope);
+  const done = fields.filter(v111FieldCompleted).length;
+  const total = fields.length;
+  const percent = total ? Math.round(done * 100 / total) : 100;
+
+  return {fields, done, total, percent};
+}
+
+/* v1.1.1 ersetzt die v1.1.0-Prozessfeldlogik */
+function v110ProcessFields(scope){
+  return v111ProcessFields(scope);
+}
+
+/* v1.1.1 ersetzt die v1.1.0-Feldabschlusslogik */
+function v110Completed(el){
+  return v111FieldCompleted(el);
+}
+
+/* Strengere Folgetermin-Freigabe:
+   Ein Folgetermin wird erst freigegeben, wenn der Vortermin aus relevanten Prozessfeldern
+   mindestens 80% erreicht oder alle vorhandenen Pflicht-/Prozessfelder vollständig sind.
+*/
+function isTabCompleted(tabBtn){
+  if(!tabBtn) return false;
+
+  const rootId = tabBtn.dataset.root;
+  const idx = tabBtn.dataset.idx;
+
+  const pane = document.querySelector(
+    `.qt-tab-pane[data-pane="${CSS.escape(rootId)}"][data-idx="${CSS.escape(idx)}"]`
+  );
+
+  if(!pane) return false;
+
+  const result = v111ChapterCompletion(pane);
+
+  // Keine relevanten Felder: nicht als abgeschlossen werten, damit keine falsche Freigabe entsteht.
+  if(result.total === 0) return false;
+
+  // Medizinisch/praktisch sinnvoller: fast vollständig statt nur "irgendwas ausgefüllt".
+  return result.percent >= 80;
+}
+
+function v111ExplainFollowupLocks(){
+  const root = document.getElementById("renderRoot");
+  if(!root) return;
+
+  root.querySelectorAll(".qt-tab-button.followup-locked").forEach(btn => {
+    btn.title = "Folgetermin gesperrt: Der vorherige Untersuchungstermin muss erst ausreichend dokumentiert sein.";
+  });
+}
+
+/* Live-Update der Prozesstreue mit v1.1.1-Logik */
+function updateProcessFidelity(){
+  const text = document.getElementById("processFidelityText");
+  const bar = document.getElementById("processFidelityBar");
+  if(!text || !bar) return;
+
+  const scope = typeof activeScoreScope === "function" ? activeScoreScope() : document.getElementById("renderRoot");
+  const result = v111ChapterCompletion(scope);
+
+  text.textContent = `${result.percent}% (${result.done}/${result.total})`;
+  bar.style.width = result.percent + "%";
+  bar.style.minWidth = result.percent > 0 ? "5px" : "0";
+}
+
+function updateValidation111Soon(){
+  clearTimeout(window.__validation111Timer);
+  window.__validation111Timer = setTimeout(() => {
+    try { updateProcessFidelity(); } catch(e) {}
+    try { updateChapterStatusPanel(); } catch(e) {}
+    try { applyFollowupWorkflowLogic(); } catch(e) {}
+    try { v111ExplainFollowupLocks(); } catch(e) {}
+  }, 160);
+}
+
+document.addEventListener("input", updateValidation111Soon, true);
+document.addEventListener("change", updateValidation111Soon, true);
+document.addEventListener("click", updateValidation111Soon, true);
+setInterval(updateValidation111Soon, 2500);
+

@@ -279,3 +279,21 @@ Patch v50:
 Patch v51:
 - Linke Datensatz-Combobox ("Eintrag laden") jetzt exakt so breit wie die Buttons darüber.
 - Restliches Layout unverändert.
+
+MOH v1.1.0 – Prozesstreue 2.0
+
+- Kapitelstatus in der linken Seitenleiste
+- Status je Kapitel: vollständig / begonnen / offen
+- Prozentanzeige je Kapitel
+- Schaltfläche "Zum ersten offenen Feld"
+- Markierung fehlender Prozess-/Pflichtfelder
+- Markierung vollständig ausgefüllter Felder
+- Kapitelbuttons erhalten Validierungsstatus
+
+
+MOH v1.1.1 – Regelbasierte Prozesstreue
+
+- System-/Auto-/Scorefelder aus Prozesstreue ausgeschlossen
+- Kapitelstatus basiert auf relevanten Prozessfeldern
+- Folgetermin-Freigabe strenger: vorheriger Termin muss ausreichend dokumentiert sein
+- Tooltip für gesperrte Folgetermine ergänzt
